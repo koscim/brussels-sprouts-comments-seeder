@@ -25,18 +25,18 @@ def db_connection
 end
 
 db_connection do |conn|
-  # titles = TITLES.uniq
-  # titles.each do |title|
-  #   sql = "INSERT INTO recipes (name) VALUES ('#{title}')"
-  #   conn.exec(sql)
-  # end
-  # 10.times do
-  #   name = Faker::Name.unique.name
-  #   title = Faker::Lorem.unique.sentence(word_count = 4, supplemental = false, random_words_to_add = 6)
-  #   description = Faker::Lorem.unique.paragraph
-  #   recipe_title = titles[1 + rand(titles.length)]
-  #   sql_query = "INSERT INTO comments (name, title, description, recipe) VALUES ($1, $2, $3, $4)"
-  #   data = [name, title, description, recipe_title]
-  #   conn.exec_params(sql_query, data)
-  # end
+  titles = TITLES.uniq
+  titles.each do |title|
+    sql = "INSERT INTO recipes (name) VALUES ('#{title}')"
+    conn.exec(sql)
+  end
+  10.times do
+    name = Faker::Name.unique.name
+    title = Faker::Lorem.unique.sentence(word_count = 4, supplemental = false, random_words_to_add = 6)
+    description = Faker::Lorem.unique.paragraph
+    recipe_title = titles[1 + rand(titles.length)]
+    sql_query = "INSERT INTO comments (name, title, description, recipe) VALUES ($1, $2, $3, $4)"
+    data = [name, title, description, recipe_title]
+    conn.exec_params(sql_query, data)
+  end
 end
